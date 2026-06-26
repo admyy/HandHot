@@ -115,13 +115,14 @@ fun WebViewScreen(
             AndroidView(
                 factory = { context ->
                     WebView(context).apply {
+                        webView = this
                         layoutParams = ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT
                         )
 
                         @SuppressLint("SetJavaScriptEnabled")
-                        settings.apply {
+                        this.settings.apply {
                             javaScriptEnabled = true
                             domStorageEnabled = true
                             useWideViewPort = true
