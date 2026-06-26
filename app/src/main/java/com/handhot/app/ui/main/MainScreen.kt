@@ -245,6 +245,7 @@ fun SourceHeader(
 }
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 fun FeedItemCard(
     item: FeedItem,
     sourceName: String,

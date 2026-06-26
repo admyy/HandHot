@@ -43,6 +43,7 @@ fun WebViewScreen(
     var pageFinished by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val settings by settingsViewModel.settingsState.collectAsState()
+    val context = LocalContext.current
 
     val autoReadDelayMs = when (settings.autoReadDelay) {
         "off" -> -1L
@@ -91,7 +92,7 @@ fun WebViewScreen(
                             type = "text/plain"
                             putExtra(android.content.Intent.EXTRA_TEXT, webView?.url ?: "")
                         }
-                        LocalContext.current.startActivity(
+                        context.startActivity(
                             android.content.Intent.createChooser(shareIntent, "分享链接")
                         )
                     }) {
@@ -101,7 +102,7 @@ fun WebViewScreen(
                         // Open in external browser
                         webView?.url?.let { url ->
                             val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
-                            LocalContext.current.startActivity(intent)
+                            context.startActivity(intent)
                         }
                     }) {
                         Icon(Icons.Default.OpenInBrowser, "在浏览器中打开")

@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.handhot.app.ui.detail.WebViewScreen
 import com.handhot.app.ui.main.MainScreen
 import com.handhot.app.ui.main.MainViewModel
+import com.handhot.app.ui.settings.AboutScreen
 import com.handhot.app.ui.settings.SettingsScreen
 import com.handhot.app.ui.settings.SettingsViewModel
 import com.handhot.app.ui.source.AddSourceScreen
