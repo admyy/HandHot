@@ -32,7 +32,10 @@ class WebViewFetcher(
         return withContext(Dispatchers.Main) {
             suspendCancellableCoroutine { continuation ->
                 var isResumed = false
-                val timeoutRunnable = Handler(Looper.getMainLooper()).postDelayed({
+                val handler = Handler(Looper.getMainLooper())
+
+                // Timeout runnable
+                val timeoutRunnable = Runnable {
                     if (!isResumed) {
                         isResumed = true
                         continuation.resume(
@@ -45,7 +48,8 @@ class WebViewFetcher(
                             )
                         )
                     }
-                }, FETCH_TIMEOUT_MS)
+                }
+                handler.postDelayed(timeoutRunnable, FETCH_TIMEOUT_MS)
 
                 val webView = WebView(context).apply {
                     settings.apply {
@@ -54,16 +58,14 @@ class WebViewFetcher(
                         loadWithOverviewMode = true
                         useWideViewPort = true
                         userAgentString = UserAgentPool.random()
-                        // Block images to speed up loading
                         blockNetworkImage = true
                     }
 
                     webViewClient = object : WebViewClient() {
                         override fun onPageFinished(view: WebView?, url: String?) {
-                            // Wait extra time for JavaScript to render content
-                            Handler(Looper.getMainLooper()).postDelayed({
+                            handler.postDelayed({
                                 if (isResumed) return@postDelayed
-                                extractHtml(view, source, isResumed, timeoutRunnable, continuation)
+                                extractHtml(view, source, isResumed, handler, timeoutRunnable, continuation)
                             }, JS_RENDER_DELAY_MS)
                         }
 
@@ -75,7 +77,7 @@ class WebViewFetcher(
                         ) {
                             if (!isResumed) {
                                 isResumed = true
-                                timeoutRunnable.let { Handler(Looper.getMainLooper()).removeCallbacks(it) }
+                                handler.removeCallbacks(timeoutRunnable)
                                 continuation.resume(
                                     FetchResult(
                                         sourceId = source.id,
@@ -96,7 +98,7 @@ class WebViewFetcher(
                 continuation.invokeOnCancellation {
                     if (!isResumed) {
                         isResumed = true
-                        timeoutRunnable.let { Handler(Looper.getMainLooper()).removeCallbacks(it) }
+                        handler.removeCallbacks(timeoutRunnable)
                         webView.destroy()
                     }
                 }
@@ -108,6 +110,7 @@ class WebViewFetcher(
         webView: WebView?,
         source: FeedSource,
         isResumed: Boolean,
+        handler: Handler,
         timeoutRunnable: Runnable,
         continuation: kotlinx.coroutines.CancellableContinuation<FetchResult>
     ) {
@@ -138,7 +141,7 @@ class WebViewFetcher(
                 selectorTime = source.selectorTime
             )
 
-            Handler(Looper.getMainLooper()).removeCallbacks(timeoutRunnable)
+            handler.removeCallbacks(timeoutRunnable)
             webView.destroy()
 
             if (isResumed) return@evaluateJavascript

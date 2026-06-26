@@ -44,7 +44,6 @@ object AppModule {
     ): OkHttpProvider = OkHttpProvider(cookieInterceptor)
 
     @Provides
-    @Provides
     @Singleton
     fun provideFetcherFactory(
         provider: OkHttpProvider,
