@@ -47,6 +47,12 @@ class MainViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
+    init {
+        viewModelScope.launch {
+            com.handhot.app.data.local.DefaultSourceLoader.loadIfEmpty(context, repository)
+        }
+    }
+
     private val _fetchStatus = MutableStateFlow<Map<Long, FetchStatus>>(emptyMap())
     private val _isRefreshing = MutableStateFlow(false)
 

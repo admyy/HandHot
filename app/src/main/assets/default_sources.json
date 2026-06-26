@@ -1,30 +1,32 @@
 {
-  "version": 1,
-  "updated": "2026-06-26",
+  "version": 2,
+  "updated": "2026-06-27",
   "sources": [
     {
       "name": "知乎热榜",
       "url": "https://www.zhihu.com/hot",
       "selectors": {
-        "title": "a.QuestionLink",
-        "link": "a.QuestionLink",
-        "summary": "div.HotItem-excerpt",
-        "image": "img.HotItem-img",
-        "time": "time.HotItem-time"
+        "title": "div.HotList-item h2",
+        "link": "div.HotList-item a",
+        "summary": "div.HotList-item p",
+        "image": null,
+        "time": null
       },
-      "need_login": false
+      "need_login": false,
+      "use_webview": true
     },
     {
       "name": "微博热搜",
       "url": "https://s.weibo.com/top/summary",
       "selectors": {
-        "title": "td.td-01 a",
-        "link": "td.td-01 a",
+        "title": "td.td-02 a",
+        "link": "td.td-02 a",
         "summary": null,
         "image": null,
-        "time": "td.td-01 span"
+        "time": null
       },
-      "need_login": false
+      "need_login": false,
+      "use_webview": true
     },
     {
       "name": "V2EX 热榜",
@@ -34,9 +36,10 @@
         "link": "span.item_title a",
         "summary": null,
         "image": "img.avatar",
-        "time": "span.topic_info"
+        "time": null
       },
-      "need_login": false
+      "need_login": false,
+      "use_webview": false
     },
     {
       "name": "少数派热门",
@@ -44,11 +47,12 @@
       "selectors": {
         "title": "a.article-title",
         "link": "a.article-title",
-        "summary": "p.article-excerpt",
-        "image": "img.article-cover",
-        "time": "time.article-time"
+        "summary": null,
+        "image": null,
+        "time": null
       },
-      "need_login": false
+      "need_login": false,
+      "use_webview": true
     },
     {
       "name": "百度贴吧热榜",
@@ -56,11 +60,12 @@
       "selectors": {
         "title": "a.topic-title",
         "link": "a.topic-title",
-        "summary": "p.topic-desc",
+        "summary": null,
         "image": null,
         "time": null
       },
-      "need_login": false
+      "need_login": false,
+      "use_webview": true
     }
   ]
 }

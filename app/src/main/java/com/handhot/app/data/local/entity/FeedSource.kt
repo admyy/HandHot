@@ -40,6 +40,9 @@ data class FeedSource(
     @ColumnInfo(name = "need_login")
     val needLogin: Boolean = false,
 
+    @ColumnInfo(name = "use_webview")
+    val useWebView: Boolean = false,
+
     @ColumnInfo(name = "enabled")
     val enabled: Boolean = true,
 

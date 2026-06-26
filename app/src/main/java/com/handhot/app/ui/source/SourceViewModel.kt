@@ -22,6 +22,7 @@ data class SourceFormState(
     val selectorLink: String = "",
     val selectorTime: String = "",
     val needLogin: Boolean = false,
+    val useWebView: Boolean = false,
     val isEditing: Boolean = false,
     val editingId: Long = 0,
     val nameError: String? = null,
@@ -49,6 +50,7 @@ class SourceViewModel @Inject constructor(
     fun updateSelectorLink(s: String) { _formState.value = _formState.value.copy(selectorLink = s, selectorLinkError = null) }
     fun updateSelectorTime(s: String) { _formState.value = _formState.value.copy(selectorTime = s) }
     fun updateNeedLogin(v: Boolean) { _formState.value = _formState.value.copy(needLogin = v) }
+    fun updateUseWebView(v: Boolean) { _formState.value = _formState.value.copy(useWebView = v) }
 
     fun loadSource(source: FeedSource) {
         _formState.value = SourceFormState(
@@ -60,6 +62,7 @@ class SourceViewModel @Inject constructor(
             selectorLink = source.selectorLink,
             selectorTime = source.selectorTime ?: "",
             needLogin = source.needLogin,
+            useWebView = source.useWebView,
             isEditing = true,
             editingId = source.id
         )
@@ -153,7 +156,8 @@ class SourceViewModel @Inject constructor(
                 selectorImage = state.selectorImage.ifBlank { null },
                 selectorLink = state.selectorLink,
                 selectorTime = state.selectorTime.ifBlank { null },
-                needLogin = state.needLogin
+                needLogin = state.needLogin,
+                useWebView = state.useWebView
             )
             if (state.isEditing) {
                 repository.updateSource(source)

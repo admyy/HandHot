@@ -9,7 +9,7 @@ import com.handhot.app.data.local.entity.FeedSource
 
 @Database(
     entities = [FeedSource::class, FeedItem::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

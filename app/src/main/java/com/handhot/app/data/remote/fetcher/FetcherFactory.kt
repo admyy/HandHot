@@ -1,6 +1,8 @@
 package com.handhot.app.data.remote.fetcher
 
+import android.content.Context
 import com.handhot.app.data.local.entity.FeedSource
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -9,9 +11,15 @@ import javax.inject.Singleton
 @Singleton
 class FetcherFactory @Inject constructor(
     private val publicClient: OkHttpClient,
-    private val loginClient: OkHttpClient
+    private val loginClient: OkHttpClient,
+    @ApplicationContext private val context: Context
 ) {
     fun getFetcher(source: FeedSource): FeedFetcher {
+        // WebView fetcher for SPA / JS-rendered sites
+        if (source.useWebView) {
+            return WebViewFetcher(context)
+        }
+        // Login-required sources use cookie-injected OkHttp client
         return if (source.needLogin) {
             LoginFetcher(loginClient)
         } else {

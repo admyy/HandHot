@@ -147,6 +147,22 @@ fun AddSourceScreen(
                 )
             }
 
+            // JavaScript rendering toggle (for SPA sites)
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text("JavaScript 渲染")
+                    Text(
+                        "用于知乎、微博等动态加载的网站",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Switch(
+                    checked = formState.useWebView,
+                    onCheckedChange = { viewModel.updateUseWebView(it) }
+                )
+            }
+
             // Test button
             Button(
                 onClick = { viewModel.testSelectors() },
