@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "updated": "2026-06-26",
+  "sources": [
+    {
+      "name": "知乎热榜",
+      "url": "https://www.zhihu.com/hot",
+      "selectors": {
+        "title": "a.QuestionLink",
+        "link": "a.QuestionLink",
+        "summary": "div.HotItem-excerpt",
+        "image": "img.HotItem-img",
+        "time": "time.HotItem-time"
+      },
+      "need_login": false
+    },
+    {
+      "name": "微博热搜",
+      "url": "https://s.weibo.com/top/summary",
+      "selectors": {
+        "title": "td.td-01 a",
+        "link": "td.td-01 a",
+        "summary": null,
+        "image": null,
+        "time": "td.td-01 span"
+      },
+      "need_login": false
+    },
+    {
+      "name": "V2EX 热榜",
+      "url": "https://www.v2ex.com",
+      "selectors": {
+        "title": "span.item_title a",
+        "link": "span.item_title a",
+        "summary": null,
+        "image": "img.avatar",
+        "time": "span.topic_info"
+      },
+      "need_login": false
+    },
+    {
+      "name": "少数派热门",
+      "url": "https://sspai.com",
+      "selectors": {
+        "title": "a.article-title",
+        "link": "a.article-title",
+        "summary": "p.article-excerpt",
+        "image": "img.article-cover",
+        "time": "time.article-time"
+      },
+      "need_login": false
+    },
+    {
+      "name": "百度贴吧热榜",
+      "url": "https://tieba.baidu.com/hottopic/browse/topicList",
+      "selectors": {
+        "title": "a.topic-title",
+        "link": "a.topic-title",
+        "summary": "p.topic-desc",
+        "image": null,
+        "time": null
+      },
+      "need_login": false
+    }
+  ]
+}

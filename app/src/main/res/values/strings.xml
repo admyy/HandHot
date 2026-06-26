@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">掌心热榜</string>
+    <string name="app_name_en">HandHot</string>
+
+    <!-- Main -->
+    <string name="title_main">热榜</string>
+    <string name="title_sources">数据源管理</string>
+    <string name="title_add_source">添加数据源</string>
+    <string name="title_edit_source">编辑数据源</string>
+    <string name="title_settings">设置</string>
+    <string name="title_about">关于</string>
+    <string name="title_detail">详情</string>
+
+    <!-- Actions -->
+    <string name="action_add">添加</string>
+    <string name="action_save">保存</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_delete">删除</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_mark_all_read">全部已读</string>
+    <string name="action_undo">撤销</string>
+    <string name="action_retry">重试</string>
+    <string name="action_login">去登录</string>
+    <string name="action_verify">手动验证</string>
+    <string name="action_share">分享链接</string>
+    <string name="action_open_browser">在浏览器中打开</string>
+    <string name="action_copy_link">复制链接</string>
+    <string name="action_report">举报失效</string>
+    <string name="action_export">导出配置</string>
+    <string name="action_import">导入配置</string>
+    <string name="action_clear_cookie">清除Cookie</string>
+    <string name="action_relogin">重新登录</string>
+
+    <!-- Empty states -->
+    <string name="empty_no_unread">🎉 暂无未读内容，下拉刷新试试</string>
+    <string name="empty_all_paused">所有数据源已暂停，请开启后刷新</string>
+    <string name="empty_no_sources">点击「+」添加你的第一个数据源</string>
+    <string name="empty_recommend">浏览推荐源</string>
+
+    <!-- Status -->
+    <string name="status_fetching">抓取中…</string>
+    <string name="status_fetch_failed">抓取失败</string>
+    <string name="status_login_expired">登录已过期，点击重新授权</string>
+    <string name="status_parse_failed">解析失败，需更新选择器</string>
+    <string name="status_server_error">服务器异常</string>
+    <string name="status_blocked">被拦截，点击手动验证</string>
+    <string name="status_timeout">加载超时</string>
+    <string name="status_no_new_content">无新内容</string>
+
+    <!-- Toast messages -->
+    <string name="toast_refresh_too_frequent">刷新太频繁，请稍后再试</string>
+    <string name="toast_network_error">请检查网络连接</string>
+    <string name="toast_saved">已保存</string>
+    <string name="toast_deleted">已删除</string>
+    <string name="toast_marked_read">已标记 %d 条为已读</string>
+    <string name="toast_storage_low">存储空间不足，已暂停图片下载</string>
+    <string name="toast_config_exported">配置已导出</string>
+    <string name="toast_config_imported">配置已导入</string>
+    <string name="toast_copied">已复制</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_delete_source_title">删除数据源</string>
+    <string name="dialog_delete_source_msg">确定要删除「%s」吗？该源的所有条目将被移除。</string>
+    <string name="dialog_mobile_data_title">流量提醒</string>
+    <string name="dialog_mobile_data_msg">当前使用移动网络，预计刷新所有源消耗约 %d KB 流量，是否继续？</string>
+    <string name="dialog_mobile_data_continue">继续</string>
+    <string name="dialog_mobile_data_wifi_only">仅WiFi</string>
+    <string name="dialog_login_title">需要登录</string>
+    <string name="dialog_login_msg">该源需要登录授权，是否现在登录？</string>
+    <string name="dialog_captcha_title">检测到验证码</string>
+    <string name="dialog_captcha_msg">该网站需要手动验证，是否打开验证页面？</string>
+    <string name="dialog_external_app_title">外部跳转</string>
+    <string name="dialog_external_app_msg">该链接需跳转外部应用，是否继续？</string>
+
+    <!-- Settings -->
+    <string name="settings_category_network">网络</string>
+    <string name="settings_category_display">显示</string>
+    <string name="settings_category_data">数据</string>
+    <string name="settings_category_about">关于</string>
+    <string name="settings_mobile_data">允许使用移动网络刷新</string>
+    <string name="settings_wifi_only_images">仅在WiFi下加载图片</string>
+    <string name="settings_data_retention">数据保留天数</string>
+    <string name="settings_dark_mode">夜间模式</string>
+    <string name="settings_dark_mode_system">跟随系统</string>
+    <string name="settings_dark_mode_light">浅色</string>
+    <string name="settings_dark_mode_dark">深色</string>
+    <string name="settings_cool_down">刷新冷却时间</string>
+    <string name="settings_font_size">字体大小</string>
+    <string name="settings_font_small">小</string>
+    <string name="settings_font_medium">中</string>
+    <string name="settings_font_large">大</string>
+    <string name="settings_font_xlarge">特大</string>
+    <string name="settings_auto_read_delay">详情页自动标已读延迟</string>
+    <string name="settings_auto_read_off">关闭</string>
+    <string name="settings_auto_read_1s">1秒</string>
+    <string name="settings_auto_read_2s">2秒</string>
+    <string name="settings_auto_read_5s">5秒</string>
+    <string name="settings_days_3">3天</string>
+    <string name="settings_days_7">7天</string>
+    <string name="settings_days_15">15天</string>
+    <string name="settings_days_30">30天</string>
+    <string name="settings_cool_30">30秒</string>
+    <string name="settings_cool_60">60秒</string>
+    <string name="settings_cool_120">120秒</string>
+
+    <!-- About -->
+    <string name="about_version">版本 %s</string>
+    <string name="about_disclaimer">本应用所有数据均来自公开网络，仅用于个人学习，版权归原网站所有。请勿高频抓取或商业使用。</string>
+    <string name="about_privacy">本应用不包含任何网络上报、统计 SDK 或遥测。所有数据（Cookie、已读状态、源配置）仅存储于本地，不会上传至任何服务器。应用仅在你手动触发刷新时访问目标网站。</string>
+    <string name="about_opensource">开源协议：MIT License</string>
+</resources>
