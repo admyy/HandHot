@@ -103,4 +103,7 @@ dependencies {
 
     // SwipeRefresh
     implementation(libs.accompanist.swiperefresh)
+
+    // DataStore
+    implementation(libs.datastore.preferences)
 }
