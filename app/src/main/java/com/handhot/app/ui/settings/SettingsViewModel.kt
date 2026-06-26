@@ -12,8 +12,6 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-
 data class SettingsState(
     val allowMobileData: Boolean = false,
     val wifiOnlyImages: Boolean = true,
@@ -39,7 +37,7 @@ class SettingsViewModel @Inject constructor(
         val KEY_AUTO_READ_DELAY = stringPreferencesKey("auto_read_delay")
     }
 
-    val settingsState: StateFlow<SettingsState> = context.dataStore.data
+    val settingsState: StateFlow<SettingsState> = context.settingsDataStore.data
         .map { prefs ->
             SettingsState(
                 allowMobileData = prefs[KEY_MOBILE_DATA] ?: false,
@@ -63,7 +61,7 @@ class SettingsViewModel @Inject constructor(
 
     private fun <T> set(key: Preferences.Key<T>, value: T) {
         viewModelScope.launch {
-            context.dataStore.edit { prefs -> prefs[key] = value }
+            context.settingsDataStore.edit { prefs -> prefs[key] = value }
         }
     }
 }

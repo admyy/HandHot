@@ -10,8 +10,6 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.util.concurrent.TimeUnit
 
-private val Context.dataStore by preferencesDataStore(name = "settings")
-
 @HiltWorker
 class CleanupWorker @AssistedInject constructor(
     @Assisted context: Context,
@@ -20,7 +18,7 @@ class CleanupWorker @AssistedInject constructor(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
-        val retentionDays = applicationContext.dataStore.data
+        val retentionDays = applicationContext.settingsDataStore.data
             .map { it[intPreferencesKey("retention_days")] ?: 7 }
             .let { flow ->
                 var days = 7
