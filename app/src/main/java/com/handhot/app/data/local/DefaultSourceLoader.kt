@@ -25,9 +25,9 @@ object DefaultSourceLoader {
                 url = src.getString("url"),
                 selectorTitle = selectors.getString("title"),
                 selectorLink = selectors.getString("link"),
-                selectorSummary = selectors.optString("summary", null),
-                selectorImage = selectors.optString("image", null),
-                selectorTime = selectors.optString("time", null),
+                selectorSummary = selectors.optString("summary", "").ifBlank { null },
+                selectorImage = selectors.optString("image", "").ifBlank { null },
+                selectorTime = selectors.optString("time", "").ifBlank { null },
                 needLogin = src.optBoolean("need_login", false),
                 useWebView = src.optBoolean("use_webview", false),
                 enabled = true
