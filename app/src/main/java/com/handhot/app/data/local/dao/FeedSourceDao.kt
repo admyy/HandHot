@@ -41,4 +41,7 @@ interface FeedSourceDao {
 
     @Query("SELECT COUNT(*) FROM feed_sources WHERE enabled = 1")
     suspend fun getEnabledCount(): Int
+
+    @Query("SELECT COUNT(*) FROM feed_sources")
+    suspend fun getTotalCount(): Int
 }

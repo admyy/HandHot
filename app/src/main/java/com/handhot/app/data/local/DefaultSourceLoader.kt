@@ -8,7 +8,7 @@ import org.json.JSONObject
 object DefaultSourceLoader {
 
     suspend fun loadIfEmpty(context: Context, repository: FeedRepository) {
-        if (repository.getEnabledCount() > 0) return
+        if (repository.getTotalCount() > 0) return
         // Check total count to avoid re-import
         // Just insert — unique URL constraint prevents duplicates
         val json = context.assets.open("default_sources.json")

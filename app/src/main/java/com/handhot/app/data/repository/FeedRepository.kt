@@ -37,6 +37,7 @@ class FeedRepository @Inject constructor(
     suspend fun deleteSourceById(id: Long) = sourceDao.deleteById(id)
     suspend fun setSourceEnabled(id: Long, enabled: Boolean) = sourceDao.setEnabled(id, enabled)
     suspend fun getEnabledCount(): Int = sourceDao.getEnabledCount()
+    suspend fun getTotalCount(): Int = sourceDao.getTotalCount()
 
     // --- Item operations ---
 
